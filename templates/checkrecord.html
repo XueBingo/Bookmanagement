@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Record</title>
+</head>
+<body>
+<h1>Enter the date begin and end</h1>
+<a href="/logout">log out</a><br>
+<a href="/index">index</a><br>
+{% if not_login %}
+<a href="/login">login</a>
+    {{ 'first please!' }}
+{% endif %}
+{% if not msg %}
+    <form method="post" action="/checkrecord">
+        {% csrf_token %}
+        datefrom       ：<input type="text" name="datefrom" placeholder={{ datefrom }}><br>
+        dateto  &nbsp;&nbsp;&nbsp;       ：<input type="text" name="dateto" placeholder={{ dateto }}><br>
+        <input class="bc" type="submit" value="search">
+    </form>
+{% else %}
+    <h1>Records</h1>
+    <table border="1">
+        <tr>
+            <th>NO</th>
+            <th>Book_NO</th>
+            <th>user</th>
+            <th>number</th>
+            
+            <th>date</th>
+            <th>status</th>
+            <th>amount</th>
+        </tr>
+        {% for line in data %}
+        <tr>
+            <td>{{line.NO}}</td>
+            <td>{{line.Book_NO}}</td>
+            <td>{{line.user_NO}}</td>
+            <td>{{line.number}}</td>
+            <td>{{line.date}}</td>
+            <td>{{line.status}}</td>
+            <td>{{line.amount}}</td>
+        </tr>
+        {% endfor %}
+        </table>
+    </body>
+    </html>
+{% endif %}
+{% if not_login %}
+    {{ 'Login first please!' }}
+{% endif %}
+</body>
+</html>

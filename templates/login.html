@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+HELLO!： <br>STATUS:{{ status }}
+<form method="post" action="/login">
+    {% csrf_token %}
+    {{ aa }}<br>
+    <input type="text" name="username" placeholder="username:"/><br>
+    <input type="password" name="password" placeholder="password:"/><br>
+    <input class="tj" type="submit" value="log in"/>
+</form>
+</body>
+</html>

@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Addstock</title>
+</head>
+<body>
+<h1>increase stock</h1>
+
+<a href="/logout">log out</a><br>
+<a href="/index">index</a><br>
+{% if not_login %}
+<a href="/login">login</a>
+    {{ 'first please!' }}
+{% endif %}
+<form method="post" action="/addstock">
+    {% csrf_token %}
+    NO   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ：<input type="text" name="NO" placeholder={{ no }}><br>
+    increase &nbsp;：<input type="text" name="addstock" placeholder={{ addstock }}><br>
+    
+    <input class="bc" type="submit" value="save">
+</form>
+   {% if msg %}
+       {{ msg }}
+   {% endif %}
+</body>
+</html>

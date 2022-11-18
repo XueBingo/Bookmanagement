@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>purchase the order</title>
+</head>
+<body>
+    <h1>unpaid orders</h1>
+    <a href="/logout">log out</a><br>
+    <a href="/index">index</a><br>
+    {% if not_login %}
+    <a href="/login">login</a>
+    
+        {{ 'first please!' }}
+        {% endif %}
+    <table border="1">
+        <tr>
+            <th>NO</th>
+            <th>amount</th>  
+            <th>book</th>           
+            <th>user</th>
+            <th>date</th>
+            <th>number</th>
+            <th>status</th>
+            <th>operation</th>
+        </tr>
+        {% for line in unpaidorders %}
+        <tr>
+            <td>{{line.NO}}</td>
+            <td>{{line.amount}}</td>
+            <td>{{line.Book_NO}}</td>
+            <td>{{line.user_NO}}</td>
+            <td>{{line.date}}</td>
+            <td>{{line.number}}</td>
+            <td>{{line.status}}</td>
+            <td><a href="/pay/?NO={{line.NO}}&amount={{line.amount}}">purchase</a>
+            |
+            <a href="/returnorder/?NO={{line.NO}}">return</a></td>
+        </tr>
+        {% endfor %}
+        </table>
+    </body>
+    </html>
+    {% if sucess %}
+        <h5>{{ sucess }}</h5><br>
+    {% endif %}
+    
+    
+</body>
+</html>

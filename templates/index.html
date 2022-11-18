@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Bookstore</title>
+</head>
+<body>
+Hello! {{ status }} <br>
+<br>
+{% if lenght %}
+    <a href="/logout">log out</a><br>
+    <h1>Welcome to the admin interface!</h1><br>
+    <a href="/insertuser">Add new users</a><br>
+    <a href="/showallusers">Show all users</a><br>
+    <a href="/updateuserinfo">Update user infomation</a><br>
+    <a href="/updatebookinfo">Update book infomation</a><br>
+    <a href="/searchbook">Search books</a><br>
+    <a href="/orderbook">Order books</a><br>
+    <a href="/purchaseorder">Pay/Return orders</a><br>
+    <a href="/addstock">Stock management</a><br>
+    <a href="/sellbook">Sales</a><br>
+    <a href="/checkrecord">Record history</a><br>
+    <a href="/showbook">Sales ranking</a><br>
+{% else %}
+    <a href="/login">log in</a><br>
+{% endif %}
+</body>
+</html>

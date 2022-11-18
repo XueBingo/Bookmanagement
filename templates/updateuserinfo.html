@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>update your user infomation</h1>
+<a href="/logout">log out</a><br>
+<a href="/index">index</a><br>
+{% if not_login %}
+<a href="/login">login</a>
+    {{ 'first please!' }}
+{% endif %}
+<form method="post" action="/updateuserinfo">
+    {% csrf_token %}
+    username：<input type="text" name="username" placeholder={{ username }}><br>
+    name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ：<input type="text" name="name" placeholder={{ name }}><br>
+    password：<input type="password" name="password" placeholder={{ password }}><br>
+    gender&nbsp;&nbsp;   ：<input type="text" name="gender" placeholder={{ gender }}><br>
+    age&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     ：<input type="text" name="age" placeholder={{ age }}><br>
+    <input class="bc" type="submit" value="save">
+</form>
+   {% if msg %}
+       {{ msg }}
+   {% endif %}
+</body>
+</html>

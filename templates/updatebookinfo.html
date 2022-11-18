@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>updatebookinfo</title>
+</head>
+<body>
+<h1>update the book infomation with its NO</h1>
+<a href="/logout">log out</a><br>
+<a href="/index">index</a><br>
+{% if not_login %}
+<a href="/login">login</a>
+    {{ 'first please!' }}
+{% endif %}
+<form method="post" action="/updatebookinfo">
+    {% csrf_token %}
+    NO   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ：<input type="text" name="NO" placeholder={{ no }}><br>
+    ISBN  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   ：<input type="text" name="ISBN" placeholder={{ ISBN }}><br>
+    title  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; ：<input type="text" name="title" placeholder={{ title }}><br>
+    author  &nbsp;&nbsp;&nbsp; ：<input type="text" name="author" placeholder={{ author }}><br>
+    publisher：<input type="text" name="publisher" placeholder={{ publisher }}><br>
+    price   &nbsp;&nbsp;&nbsp;&nbsp; ：<input type="text" name="price" placeholder={{ price }}><br>
+    <input class="bc" type="submit" value="save">
+</form>
+   {% if msg %}
+       {{ msg }}
+   {% endif %}
+
+</body>
+</html>

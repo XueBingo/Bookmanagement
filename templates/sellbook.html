@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sellbook</title>
+</head>
+<body>
+<h1>sell books in stock</h1>
+<a href="/logout">log out</a><br>
+<a href="/index">index</a><br>
+{% if not_login %}
+<a href="/login">login</a>
+    {{ 'first please!' }}
+{% endif %}
+<form method="post" action="/sellbook">
+    {% csrf_token %}
+    NO   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ：<input type="text" name="NO" placeholder={{ no }}><br>
+    number &nbsp;：<input type="text" name="number" placeholder={{ number }}><br>
+    
+    <input class="bc" type="submit" value="save">
+</form>
+   {% if msg %}
+       {{ msg }}
+   {% endif %}
+
+</body>
+</html>

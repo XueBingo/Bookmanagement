@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Bookstore</title>
+</head>
+<body>
+<h1>Please fill in the user information</h1>
+<a href="/logout">log out</a><br>
+<a href="/index">index</a><br>
+{% if not_login %}
+<a href="/login">login</a>
+    {{ 'first please!' }}
+{% endif %}
+<form method="post" action="/insertuser">
+    {% csrf_token %}
+    Username：<input type="text" name="user_username"/><br>
+    Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <input type="text" name="user_name"/><br>
+    Password：<input type="password" name="user_password"/><br>
+    Gender &nbsp;&nbsp; ：<input type="text" name="user_gender"/><br>
+    Age  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   ：<input type="text" name="user_age"/><br>
+    <input class="bc" type="submit" value="Save"/>
+    {% if msg %}
+        <h5>{{ msg }}</h5><br>
+    {% endif %}
+    {% if error %}
+        <h5>{{ error }}</h5><br>
+    {% endif %}
+    {% if sucess %}
+        <h5>{{ sucess }}</h5><br>
+    {% endif %}
+</form>
+</body>
+</html>

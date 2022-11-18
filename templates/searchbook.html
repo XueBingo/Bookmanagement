@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>you can search with bookno / ISBN / title / author / publisher</h1>
+<a href="/logout">log out</a><br>
+<a href="/index">index</a><br>
+{% if not_login %}
+<a href="/login">login</a>
+    {{ 'first please!' }}
+{% endif %}
+{% if not msg %}
+    <form method="post" action="/searchbook">
+        {% csrf_token %}
+        NO    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;  ：<input type="text" name="NO" placeholder={{ no }}><br>
+        ISBN  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;  ：<input type="text" name="ISBN" placeholder={{ ISBN }}><br>
+        title   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ：<input type="text" name="title" placeholder={{ title }}><br>
+        author &nbsp;&nbsp;&nbsp;  ：<input type="text" name="author" placeholder={{ author }}><br>
+        publisher：<input type="text" name="publisher" placeholder={{ publisher }}><br>
+        <input class="bc" type="submit" value="search">
+    </form>
+{% else %}
+    <h1>book_info</h1>
+    <table border="1">
+        <tr>
+            <th>NO</th>
+            <th>ISBN</th>
+            <th>title</th>
+            <th>author</th>
+            <th>publisher</th>
+        </tr>
+        {% for line in data %}
+        <tr>
+            <td>{{line.NO}}</td>
+            <td>{{line.ISBN}}</td>
+            <td>{{line.title}}</td>
+            <td>{{line.author}}</td>
+            <td>{{line.publisher}}</td>
+        </tr>
+        {% endfor %}
+        </table>
+    </body>
+    </html>
+{% endif %}
+
+
+</body>
+</html>

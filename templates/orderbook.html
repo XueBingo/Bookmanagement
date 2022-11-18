@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>fill in the order information</h1>
+<h1>if new book, provide more!(the last three)</h1>
+<a href="/logout">log out</a><br>
+<a href="/index">index</a><br>
+{% if not_login %}
+<a href="/login">login</a>
+    {{ 'first please!' }}
+{% endif %}
+<form method="post" action="/orderbook">
+    {% csrf_token %}
+    ISBN &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    ：<input type="text" name="ISBN" placeholder={{ ISBN }}><br>
+    cost  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  ：<input type="text" name="cost" placeholder={{ cost }}><br>
+    number &nbsp;&nbsp; ：<input type="text" name="number" placeholder={{ number }}><br><br>
+    title  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ：<input type="text" name="title" placeholder={{ title }}><br>
+    author&nbsp;&nbsp; &nbsp;  ：<input type="text" name="author" placeholder={{ author }}><br>
+    publisher：<input type="text" name="publisher" placeholder={{ publisher }}><br>
+    <input class="bc" type="submit" value="save">
+    {% if msg %}
+        <h5>{{ msg }}</h5><br>
+    {% endif %}
+    {% if error %}
+        <h5>{{ error }}</h5><br>
+    {% endif %}
+    {% if sucess %}
+        <h5>{{ sucess }}</h5><br>
+    {% endif %}
+</form>
+</body>
+</html>

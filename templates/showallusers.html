@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>userinfo</title>
+</head>
+<body>
+    <h1>user_info</h1>
+    <a href="/logout">log out</a><br>
+<a href="/index">index</a><br>
+{% if not_login %}
+<a href="/login">login</a>
+    {{ 'first please!' }}
+{% endif %}
+    <table border="1">
+        <tr>
+            <th>NO</th>
+            <th>username</th>
+            <th>password</th>
+            <th>name</th>
+            <th>gender</th>
+            <th>age</th>
+        </tr>
+        {% for line in users %}
+        <tr>
+            <td>{{line.NO}}</td>
+            <td>{{line.username}}</td>
+            <td>{{line.password}}</td>
+            <td>{{line.name}}</td>
+            <td>{{line.gender}}</td>
+            <td>{{line.age}}</td>
+        </tr>
+        {% endfor %}
+        </table>
+    </body>
+    </html>
+
+</body>
+</html>
