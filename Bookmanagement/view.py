@@ -352,14 +352,14 @@ def pay(request):
     credit = models.Account.objects.all().order_by('NO').last().credit
     if decimal.Decimal(amount) > credit:
         context = {
-            'msg': 'out of Money!'
+            'msg': 'Insufficient balance!'
         }
         return render(request, 'purchaseorder.html', context)
 
     NO = request.GET.get('NO')
     models.Order.objects.filter(NO=NO).update(status='Paid', user_NO=_id, date=datetime.date.today())
     context = {
-        'sucess': 'successful payment! There is ' + str(credit-decimal.Decimal(amount)) + 'on account'
+        'sucess': 'Successful payment! There is ' + str(credit-decimal.Decimal(amount)) + 'on account'
     }
     acdata  = models.Account()
     acdata.NO = Accountnumber()
@@ -380,7 +380,7 @@ def returnorder(request):
     NO = request.GET.get('NO')
     models.Order.objects.filter(NO=NO).update(status='Returned', user_NO=_id, date=datetime.date.today())
     context = {
-        'sucess': 'successful return',
+        'sucess': 'Successful return',
     }
     return render(request, 'purchaseorder.html', context)
 
@@ -427,7 +427,7 @@ def sellbook(request):
         }
         return render(request, 'sellbook.html', context)
     context = {
-            'msg': 'enter the infomation'
+            'msg': 'Enter the infomation'
         }
     if request.method == "POST":
         NO = request.POST.get('NO')
@@ -435,7 +435,7 @@ def sellbook(request):
         origstock = models.Sale.objects.get(NO=NO).stock
         if number > origstock:
             context = {
-                'msg': 'out of Stock!'
+                'msg': 'Out of stock!'
             }
             return render(request, 'sellbook.html', context)
         price = models.Sale.objects.get(NO=NO).price
